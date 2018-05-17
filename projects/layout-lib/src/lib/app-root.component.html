@@ -1,0 +1,62 @@
+<!-- <ng2-slim-loading-bar [height]="'4px'"></ng2-slim-loading-bar> -->
+<p-growl [life]="6000"></p-growl>
+<p-confirmDialog></p-confirmDialog>
+<!-- <div class="layout-wrapper">
+    <div id="layout-topbar">
+        <a href="#" class="menu-button" (click)="onMenuButtonClick($event)">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a href="#" class="logo" [routerLink]="['/']">
+            <img alt="logo" src="assets/images/primeng-sidebar.svg" /> Cockpit
+        </a>
+
+        <ul class="topbar-menu">
+            <li>
+                <a [routerLink]="[m.url]" *ngFor="let m of menus">{{m.title}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="layout-content" class=" ui-grid ui-grid-responsive ui-grid-pad" style="overflow-y: auto;">
+        <bread-crumb></bread-crumb>
+        <router-outlet></router-outlet>
+    </div>
+</div> -->
+
+<div class="layout-wrapper" [ngClass]="{'layout-compact':layoutCompact}">
+
+  <div #layoutContainer class="layout-container" [ngClass]="{'menu-layout-static': !isOverlay(),
+                'menu-layout-overlay': isOverlay(),
+                'layout-menu-overlay-active': overlayMenuActive,
+                'menu-layout-horizontal': isHorizontal(),
+                'menu-layout-slim': isSlim(),
+                'layout-menu-static-inactive': staticMenuDesktopInactive,
+                'layout-menu-static-active': staticMenuMobileActive}">
+    <app-topbar></app-topbar>
+
+    <div class="layout-menu" [ngClass]="{'layout-menu-dark':'darkMenu'}">
+      <p-scrollPanel #scrollPanel [style]="{height: '100%'}">
+        <app-inline-profile *ngIf="profileMode=='inline'&&!isHorizontal()"></app-inline-profile>
+        <app-menu [reset]="resetMenu"></app-menu>
+      </p-scrollPanel>
+    </div>
+
+    <div class="layout-main">
+      <ng2-slim-loading-bar [height]="'4px'"></ng2-slim-loading-bar>
+
+      <!-- <app-breadcrumb></app-breadcrumb> -->
+
+      <div class="layout-content">
+        <router-outlet></router-outlet>
+
+        <!-- <app-footer></app-footer> -->
+      </div>
+    </div>
+
+    <!-- <app-rightpanel></app-rightpanel> -->
+
+    <div class="layout-mask"></div>
+  </div>
+
+</div>
