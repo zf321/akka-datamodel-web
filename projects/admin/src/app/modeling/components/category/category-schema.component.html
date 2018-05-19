@@ -1,0 +1,24 @@
+<p-panel>
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <span class="ui-panel-title">Category Schema</span>
+      <div style="float: right;">
+        <p-button label="" icon="fa fa-fw fa-plus" (onClick)="add()"></p-button>
+      </div>
+    </div>
+  </p-header>
+  <p-dropdown [options]="entities$ | async" [(ngModel)]="selected" placeholder="Select" optionLabel="name"></p-dropdown>
+</p-panel>
+
+<p-dialog [(visible)]="display" [contentStyle]="{'overflow':'visible','min-width':'600px'}">
+
+  <p-panel>
+    <form class="form-horizontal" [formGroup]="formGroup">
+      <dynamic-primeng-form [group]="formGroup" [model]="formModel" [layout]="formLayout"></dynamic-primeng-form>
+    </form>
+  </p-panel>
+  <p-footer>
+    <button type="button" pButton icon="fa-check" (click)="save()" label="保存"></button>
+    <button type="button" pButton icon="fa-close" (click)="display=false" label="取消"></button>
+  </p-footer>
+</p-dialog>

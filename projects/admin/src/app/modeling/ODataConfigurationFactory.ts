@@ -1,10 +1,10 @@
-import { ODataConfiguration } from "odata-lib";
+import { ODataConfiguration } from 'odata-lib';
 
 export class ODataConfigurationFactory {
 
     constructor () {
         const config = new ODataConfiguration();
-        config.baseUrl = 'http://localhost:5000/api';
+        config.baseUrl = 'http://localhost:9000/api/';
         return config;
     }
 }

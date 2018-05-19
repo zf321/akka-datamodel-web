@@ -16,4 +16,4 @@ export const COMPONENTS = [
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })
-export class ConfigComponentsModule {}
+export class ModelingComponentsModule {}

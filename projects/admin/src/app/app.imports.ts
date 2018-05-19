@@ -13,15 +13,15 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { PRIMENG_MODULES } from 'primeng-lib';
 import { DynamicFormsCoreModule } from '@ng-dynamic-forms/core';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
-import { OdataLibModule } from "odata-lib";
-import { ConfigModule } from './config/config.module';
+import { OdataLibModule } from 'odata-lib';
+import { ModelingModule } from './modeling/modeling.module';
 
 
 const STORE_DEV_TOOLS_IMPORTS = [];
 
 
 const APP_MODULE = [
-  ConfigModule
+  ModelingModule
 ];
 
 export const APP_IMPORTS = [
