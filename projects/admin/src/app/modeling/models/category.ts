@@ -1,16 +1,23 @@
-export interface CategoryTypeSchema {
+import { Category } from './category';
+export class CategoryTypeSchema {
   id: string;
   name: string;
   code: string;
+  types: CategoryType[];
   isSystem: boolean;
+
+  constructor(){
+    id =
+  }
 }
 
 export interface CategoryType {
   id: string;
   name: string;
+  code: string;
   parent: CategoryType;
   schema: CategoryTypeSchema;
-  code: string;
+  categories: Category[];
   isSystem: boolean;
 }
 
@@ -21,16 +28,6 @@ export interface Category {
   id: string;
   name: string;
   parent: Category;
-  code: string;
-  isSystem: boolean;
-}
-
-export interface CategoryClassification {
-  id: string;
-  relateId: string;
-  category: Category;
-  fromDate: Date | string;
-  endDate: Date | string;
   code: string;
   isSystem: boolean;
 }

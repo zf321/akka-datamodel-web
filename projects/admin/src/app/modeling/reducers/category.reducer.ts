@@ -6,6 +6,7 @@ import { ActionsUnion, ActionTypes } from '../actions/category.actions';
 
 
 export interface State extends EntityState<CategoryTypeSchema> {
+  selectedSchemaId: string | null;
 }
 
 
@@ -16,6 +17,7 @@ export const adapter: EntityAdapter<CategoryTypeSchema> = createEntityAdapter<Ca
 
 
 export const initialState: State = adapter.getInitialState({
+  selectedSchemaId: null
 });
 
 export function reducer(
@@ -25,12 +27,21 @@ export function reducer(
   switch (action.type) {
     case ActionTypes.LoadSchemaSuccess: {
       return adapter.addMany(action.payload, {
-        ...state
+        ...state,
+        selectedSchemaId: state.selectedSchemaId,
       });
     }
-
+    case ActionTypes.SelectSchema: {
+      return {
+        ...state,
+        selectedSchemaId: action.payload,
+      };
+    }
     default: {
       return state;
     }
   }
 }
+
+
+export const getSelectedSchemaId = (state: State) => state.selectedSchemaId;

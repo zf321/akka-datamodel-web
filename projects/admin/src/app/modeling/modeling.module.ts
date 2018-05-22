@@ -23,9 +23,6 @@ import { EffectsModule } from '@ngrx/effects';
     CommonModule,
     ModelingComponentsModule,
     PRIMENG_MODULES,
-    ReactiveFormsModule,
-    DynamicFormsCoreModule.forRoot(),
-    DynamicFormsPrimeNGUIModule,
 
     StoreModule.forFeature('modeling', reducers),
     EffectsModule.forFeature([CategoryEffects]),
@@ -46,7 +43,7 @@ import { EffectsModule } from '@ngrx/effects';
   ],
   declarations: [
     ModelingIndexPageComponent, CategoryPageComponent, AssociationPageComponent,
-    CategorySchemaComponent
+
   ],
   providers: [{ provide: ODataConfiguration, useFactory: ODataConfigurationFactory }, ODataServiceFactory],
 })

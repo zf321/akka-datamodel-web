@@ -1,11 +1,12 @@
 import { Action } from '@ngrx/store';
-import { CategoryTypeSchema } from '../models/category';
+import { CategoryTypeSchema, CategoryType } from '../models/category';
 
 export enum ActionTypes {
   CreateSchema = '[Category] CreateSchema',
   LoadSchema = '[Category] LoadSchema',
   LoadSchemaSuccess = '[Category] LoadSchema Success',
-  Select = '[Category] Select',
+  SelectSchema = '[Category] SelectSchema',
+  AddType = '[Category] AddType',
 }
 
 export class CreateSchema implements Action {
@@ -20,14 +21,20 @@ export class LoadSchemaSuccess implements Action {
   readonly type = ActionTypes.LoadSchemaSuccess;
   constructor(public payload: CategoryTypeSchema[]) { }
 }
-export class Select implements Action {
-  readonly type = ActionTypes.Select;
+export class SelectSchema implements Action {
+  readonly type = ActionTypes.SelectSchema;
 
   constructor(public payload: string) { }
+}
+export class AddType implements Action {
+  readonly type = ActionTypes.AddType;
+
+  constructor(public schemaId, public payload: CategoryType) { }
 }
 
 export type ActionsUnion =
   | CreateSchema
   | LoadSchema
   | LoadSchemaSuccess
-  | Select;
+  | SelectSchema
+  | AddType;

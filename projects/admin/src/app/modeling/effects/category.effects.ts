@@ -1,4 +1,5 @@
-import { CategoryTypeSchema } from './../models/category';
+import { HttpClient } from '@angular/common/http';
+import { CategoryTypeSchema, CategoryType } from './../models/category';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
@@ -15,8 +16,9 @@ import { map, switchMap } from 'rxjs/operators';
 @Injectable()
 export class CategoryEffects {
   private odataSchema: ODataService<CategoryTypeSchema>;
-  constructor(private actions$: Actions, private odataFactory: ODataServiceFactory) {
-    this.odataSchema = odataFactory.CreateService<CategoryTypeSchema>('category/schema');
+  baseUrl = 'http://localhost:9000/api/';
+  constructor(private actions$: Actions, private odataFactory: ODataServiceFactory, private http: HttpClient) {
+    this.odataSchema = odataFactory.CreateService<CategoryTypeSchema>('category/');
   }
 
 
@@ -29,13 +31,21 @@ export class CategoryEffects {
         .map(entities => new act.LoadSchemaSuccess(entities));
     }));
 
-    @Effect()
-    createSchema$: Observable<Action> = this.actions$.pipe(
-      ofType<act.CreateSchema>(act.ActionTypes.CreateSchema),
-      map(action => action.payload),
-      switchMap(payload => {
-        return this.odataSchema.Post(payload)
-          .map(entity => new act.LoadSchema());
-      }));
+  @Effect()
+  createSchema$: Observable<Action> = this.actions$.pipe(
+    ofType<act.CreateSchema>(act.ActionTypes.CreateSchema),
+    map(action => action.payload),
+    switchMap(payload => {
+      return this.odataSchema.Post(payload)
+        .map(entity => new act.LoadSchema());
+    }));
+
+  @Effect()
+  addType$: Observable<Action> = this.actions$.pipe(
+    ofType<act.AddType>(act.ActionTypes.AddType),
+    switchMap(payload => {
+      return this.http.post(this.baseUrl + 'category/' + payload.schemaId + '/type', payload.payload)
+        .map(entity => new act.LoadSchema());
+    }));
 
 }

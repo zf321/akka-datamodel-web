@@ -1,5 +1,13 @@
 <div class="ui-g">
-  <div class="ui-g-4">
-    <category-schema ></category-schema>
+  <div class="ui-g-12">
+    <category-schema (selected)="selectedSchema =$event"></category-schema>
+  </div>
+  <div class="ui-g-12">
+    <div class="ui-g-6">
+      <category-type [schema]="selectedSchema"></category-type>
+    </div>
+    <div class="ui-g-6">
+      <!-- <category-type></category-type> -->
+    </div>
   </div>
 </div>

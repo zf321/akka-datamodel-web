@@ -1,18 +1,17 @@
 <p-panel>
   <p-header>
     <div class="ui-helper-clearfix">
-      <span class="ui-panel-title">Category Schema</span>
+      <span class="ui-panel-title">Category</span>
       <div style="float: right;">
         <p-button label="" icon="fa fa-fw fa-plus" (onClick)="add()"></p-button>
       </div>
     </div>
   </p-header>
-  <p-dropdown [options]="entities$ | async" (onChange)="change($event)" placeholder="Select" optionLabel="name"></p-dropdown>
 </p-panel>
 
 <p-dialog [(visible)]="display" [contentStyle]="{'overflow':'visible','min-width':'600px'}">
 
-  <p-panel [header]="'CategorySchema'">
+  <p-panel [header]="'Category'">
     <form class="form-horizontal" [formGroup]="formGroup">
       <dynamic-primeng-form [group]="formGroup" [model]="formModel" [layout]="formLayout"></dynamic-primeng-form>
     </form>

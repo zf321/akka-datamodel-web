@@ -1,3 +1,4 @@
+import { CategoryTypeSchema } from './../models/category';
 
 import { createSelector, createFeatureSelector, ActionReducerMap } from '@ngrx/store';
 import { concat } from 'rxjs/observable/concat';
@@ -31,3 +32,16 @@ export const {
   selectAll: getAllCategorys,
   selectTotal: getTotalCategorys,
 } = fromCategory.adapter.getSelectors(getCategoryState);
+
+export const getSelectedSchemaId = createSelector(
+  getCategoryState,
+  fromCategory.getSelectedSchemaId
+);
+
+export const getSelectedSchema = createSelector(
+  getCategoryState,
+  getSelectedSchemaId,
+  (entities, selectedId) => {
+    return selectedId && entities[selectedId];
+  }
+);

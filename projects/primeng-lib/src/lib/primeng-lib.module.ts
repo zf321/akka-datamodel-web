@@ -1,3 +1,4 @@
+
 import {
   ChartModule, CarouselModule, MegaMenuModule, BreadcrumbModule,
   EditorModule, RatingModule, SliderModule, SidebarModule, ColorPickerModule
@@ -77,7 +78,10 @@ const MODULES = [
   DragDropModule, SharedModule, CardModule,
   ProgressBarModule, MultiSelectModule, CalendarModule, ChartModule, CarouselModule,
   MegaMenuModule, BreadcrumbModule, TabMenuModule, InplaceModule, DataListModule, FileUploadModule, ChipsModule,
-  AutoCompleteModule, EditorModule, RatingModule, SliderModule, SidebarModule, ColorPickerModule, ScrollPanelModule
+  AutoCompleteModule, EditorModule, RatingModule, SliderModule, SidebarModule, ColorPickerModule, ScrollPanelModule,
+
+
+
 ];
 
 @NgModule({

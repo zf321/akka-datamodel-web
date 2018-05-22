@@ -3,3 +3,5 @@
  */
 
 export * from './lib/primeng-lib.module';
+
+export * from 'primeng/api';

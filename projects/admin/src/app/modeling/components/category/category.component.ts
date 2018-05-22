@@ -1,5 +1,6 @@
+import { getSelectedSchema } from './../../reducers/index';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { CategoryTypeSchema } from '../../models/category';
+import { CategoryTypeSchema, CategoryType } from '../../models/category';
 import { DynamicFormControlModel, DynamicFormLayout, DynamicInputModel, DynamicFormService } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 import * as fromModeling from '../../reducers';
@@ -9,13 +10,13 @@ import { Observable } from 'rxjs';
 
 
 @Component({
-  selector: 'category-schema',
-  templateUrl: 'category-schema.component.html'
+  selector: 'category',
+  templateUrl: 'category.component.html'
 })
 
-export class CategorySchemaComponent implements OnInit {
-  entities$: Observable<CategoryTypeSchema[]>;
-  @Output() selected: EventEmitter<CategoryTypeSchema> = new EventEmitter<CategoryTypeSchema>();
+export class CategoryComponent implements OnInit {
+  @Input() schema: CategoryTypeSchema;
+  @Output() selected: EventEmitter<CategoryType>;
 
   formModel: DynamicFormControlModel[] = [
     new DynamicInputModel({
@@ -33,16 +34,12 @@ export class CategorySchemaComponent implements OnInit {
   display = false;
 
   constructor(private store: Store<fromModeling.State>, private formService: DynamicFormService) {
-    this.entities$ = store.pipe(select(fromModeling.getAllCategorys));
   }
 
   ngOnInit() {
     this.formGroup = this.formService.createFormGroup(this.formModel);
-    this.store.dispatch(new actCategory.LoadSchema());
   }
-  change(e) {
-    this.selected.emit(e.value);
-  }
+
   add() {
     this.display = true;
   }
@@ -50,8 +47,6 @@ export class CategorySchemaComponent implements OnInit {
   save() {
     const en = this.formGroup.value;
     en.isSystem = true;
-    en.types = [];
-    this.store.dispatch(new actCategory.CreateSchema(en));
     this.display = false;
   }
 }
