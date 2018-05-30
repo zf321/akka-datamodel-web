@@ -1,7 +1,7 @@
 
 import {
   ChartModule, CarouselModule, MegaMenuModule, BreadcrumbModule,
-  EditorModule, RatingModule, SliderModule, SidebarModule, ColorPickerModule
+  EditorModule, RatingModule, SliderModule, SidebarModule, ColorPickerModule, ContextMenuModule
 } from 'primeng/primeng';
 // input
 import { AutoCompleteModule } from 'primeng/primeng';
@@ -79,6 +79,7 @@ const MODULES = [
   ProgressBarModule, MultiSelectModule, CalendarModule, ChartModule, CarouselModule,
   MegaMenuModule, BreadcrumbModule, TabMenuModule, InplaceModule, DataListModule, FileUploadModule, ChipsModule,
   AutoCompleteModule, EditorModule, RatingModule, SliderModule, SidebarModule, ColorPickerModule, ScrollPanelModule,
+  ContextMenuModule
 
 
 

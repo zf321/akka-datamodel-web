@@ -7,6 +7,7 @@ export enum ActionTypes {
   LoadSchemaSuccess = '[Category] LoadSchema Success',
   SelectSchema = '[Category] SelectSchema',
   AddType = '[Category] AddType',
+  DeleteType = '[Category] DeleteType',
 }
 
 export class CreateSchema implements Action {
@@ -28,6 +29,11 @@ export class SelectSchema implements Action {
 }
 export class AddType implements Action {
   readonly type = ActionTypes.AddType;
+
+  constructor(public schemaId, public payload: CategoryType) { }
+}
+export class DeleteType implements Action {
+  readonly type = ActionTypes.DeleteType;
 
   constructor(public schemaId, public payload: CategoryType) { }
 }

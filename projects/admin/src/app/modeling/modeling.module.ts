@@ -17,6 +17,7 @@ import { AssociationPageComponent } from './containers/association-page';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { AssociationEffects } from './effects/association.effects';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { EffectsModule } from '@ngrx/effects';
     PRIMENG_MODULES,
 
     StoreModule.forFeature('modeling', reducers),
-    EffectsModule.forFeature([CategoryEffects]),
+    EffectsModule.forFeature([CategoryEffects, AssociationEffects]),
 
 
     RouterModule.forChild(

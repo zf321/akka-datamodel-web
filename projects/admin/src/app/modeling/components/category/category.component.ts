@@ -46,7 +46,6 @@ export class CategoryComponent implements OnInit {
 
   save() {
     const en = this.formGroup.value;
-    en.isSystem = true;
     this.display = false;
   }
 }

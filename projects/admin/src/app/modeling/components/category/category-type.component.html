@@ -4,10 +4,11 @@
       <span class="ui-panel-title">Category Type</span>
       <div style="float: right;">
         <p-button label="" icon="fa fa-fw fa-plus" (onClick)="add()"></p-button>
+        <p-button label="" icon="fa fa-fw fa-refresh" (onClick)="refresh()"></p-button>
       </div>
     </div>
   </p-header>
-  <p-tree [value]="tree"></p-tree>
+  <p-tree [value]="tree" selectionMode="single" [contextMenu]="cm" [(selection)]="selectedType"></p-tree>
 </p-panel>
 
 <p-dialog [(visible)]="display" [contentStyle]="{'overflow':'visible','min-width':'600px'}">
@@ -22,3 +23,4 @@
     <button type="button" pButton icon="fa-close" (click)="display=false" label="取消"></button>
   </p-footer>
 </p-dialog>
+<p-contextMenu #cm [model]="menus"></p-contextMenu>

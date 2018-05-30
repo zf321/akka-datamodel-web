@@ -1,14 +1,11 @@
 export interface Association {
-  Id: string;
-  From: string;
-  To: string;
-  AssociationRule: AssociationRule;
-  TypeId: string;
-  FromDate: Date | string;
-  EndDate: Date | string;
+  id: string;
+  from: string;
+  to: string;
+  rule: AssociationRule;
+  fromDate: Date | string;
+  endDate: Date | string;
 
-  Code: string;
-  IsSystem: boolean;
 }
 
 

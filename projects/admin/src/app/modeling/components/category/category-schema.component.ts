@@ -46,11 +46,12 @@ export class CategorySchemaComponent implements OnInit {
   add() {
     this.display = true;
   }
+  refresh() {
+    this.store.dispatch(new actCategory.LoadSchema());
+  }
 
   save() {
     const en = this.formGroup.value;
-    en.isSystem = true;
-    en.types = [];
     this.store.dispatch(new actCategory.CreateSchema(en));
     this.display = false;
   }
