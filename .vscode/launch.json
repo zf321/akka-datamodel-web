@@ -6,7 +6,6 @@
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:4200",
-            "preLaunchTask": "ngserve",
             "webRoot": "${workspaceRoot}",
             "sourceMaps": true,
             "sourceMapPathOverrides": {

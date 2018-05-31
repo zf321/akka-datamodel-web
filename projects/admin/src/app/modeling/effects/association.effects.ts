@@ -10,7 +10,7 @@ import { of } from 'rxjs/observable/of';
 
 import * as act from '../actions/association.actions';
 import { ODataServiceFactory, ODataService } from 'odata-lib';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, startWith } from 'rxjs/operators';
 
 
 @Injectable()
@@ -24,7 +24,7 @@ export class AssociationEffects {
   @Effect()
   load$: Observable<Action> = this.actions$.pipe(
     ofType<act.Load>(act.ActionTypes.Load),
-    // .startWith(new act.GetAllAction())
+    startWith(new act.Load()),
     switchMap(query => {
       return this.odata.Query().Exec()
         .map(entities => new act.LoadSuccess(entities));

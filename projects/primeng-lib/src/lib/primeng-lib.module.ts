@@ -50,6 +50,7 @@ import { MessagesModule } from 'primeng/primeng';
 import { GrowlModule } from 'primeng/primeng';
 // drag drop
 import { DragDropModule } from 'primeng/primeng';
+import { TreeDragDropService } from 'primeng/api';
 // misc
 import { ProgressBarModule } from 'primeng/progressbar';
 import { SharedModule } from 'primeng/primeng';
@@ -90,6 +91,7 @@ const MODULES = [
     MODULES
   ],
   declarations: [],
+  providers: [TreeDragDropService],
   exports: [MODULES]
 })
 export class PrimengLibModule { }

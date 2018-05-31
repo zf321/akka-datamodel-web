@@ -1,5 +1,5 @@
 import { Association } from './../models/association';
-import { CategoryTypeSchema } from './../models/category';
+import { Category } from './../models/category';
 
 import { createSelector, createFeatureSelector, ActionReducerMap } from '@ngrx/store';
 import { concat } from 'rxjs/observable/concat';
@@ -37,18 +37,6 @@ export const {
   selectTotal: getTotalCategorys,
 } = fromCategory.adapter.getSelectors(getCategoryState);
 
-export const getSelectedSchemaId = createSelector(
-  getCategoryState,
-  fromCategory.getSelectedSchemaId
-);
-
-export const getSelectedSchema = createSelector(
-  getCategoryState,
-  getSelectedSchemaId,
-  (entities, selectedId) => {
-    return selectedId && entities[selectedId];
-  });
-
 /**
  * association
  */
@@ -63,3 +51,19 @@ export const {
   selectAll: getAllAssociations,
   selectTotal: getTotalAssociations,
 } = fromAssociation.adapter.getSelectors(getAssociationState);
+
+
+
+export const getCategoryTree = createSelector(
+  getAllCategorys,
+  getAllAssociations,
+  (ca, as: Association[]) => {
+    if (ca && as) {
+      const d = {};
+      as.forEach(c => d[c.to] = c.from);
+      ca.forEach(c => c['parent'] = d[c.id]);
+      return fromCategory.listToTree(ca, null);
+    }
+    return ca;
+  }
+);

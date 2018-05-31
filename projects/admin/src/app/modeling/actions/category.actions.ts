@@ -1,46 +1,46 @@
 import { Action } from '@ngrx/store';
-import { CategoryTypeSchema, CategoryType } from '../models/category';
+import { Category } from '../models/category';
 
 export enum ActionTypes {
-  CreateSchema = '[Category] CreateSchema',
-  LoadSchema = '[Category] LoadSchema',
-  LoadSchemaSuccess = '[Category] LoadSchema Success',
-  SelectSchema = '[Category] SelectSchema',
-  AddType = '[Category] AddType',
-  DeleteType = '[Category] DeleteType',
+  Create = '[Category] Create',
+  Load = '[Category] Load',
+  LoadSuccess = '[Category] Load Success',
+  Select = '[Category] Select',
+  AddChild = '[Category] AddChild',
+  Delete = '[Category] Delete',
 }
 
-export class CreateSchema implements Action {
-  readonly type = ActionTypes.CreateSchema;
-  constructor(public payload: CategoryTypeSchema) { }
+export class Create implements Action {
+  readonly type = ActionTypes.Create;
+  constructor(public payload: Category) { }
 }
-export class LoadSchema implements Action {
-  readonly type = ActionTypes.LoadSchema;
+export class Load implements Action {
+  readonly type = ActionTypes.Load;
 }
 
-export class LoadSchemaSuccess implements Action {
-  readonly type = ActionTypes.LoadSchemaSuccess;
-  constructor(public payload: CategoryTypeSchema[]) { }
+export class LoadSuccess implements Action {
+  readonly type = ActionTypes.LoadSuccess;
+  constructor(public payload: Category[]) { }
 }
-export class SelectSchema implements Action {
-  readonly type = ActionTypes.SelectSchema;
+export class Select implements Action {
+  readonly type = ActionTypes.Select;
 
   constructor(public payload: string) { }
 }
-export class AddType implements Action {
-  readonly type = ActionTypes.AddType;
+export class AddChild implements Action {
+  readonly type = ActionTypes.AddChild;
 
-  constructor(public schemaId, public payload: CategoryType) { }
+  constructor(public id: string, public payload: Category) { }
 }
-export class DeleteType implements Action {
-  readonly type = ActionTypes.DeleteType;
+export class Delete implements Action {
+  readonly type = ActionTypes.Delete;
 
-  constructor(public schemaId, public payload: CategoryType) { }
+  constructor(public payload: Category) { }
 }
 
 export type ActionsUnion =
-  | CreateSchema
-  | LoadSchema
-  | LoadSchemaSuccess
-  | SelectSchema
-  | AddType;
+  | Create
+  | Load
+  | LoadSuccess
+  | Select
+  | Delete;

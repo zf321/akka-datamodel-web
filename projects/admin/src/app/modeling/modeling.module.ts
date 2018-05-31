@@ -12,7 +12,6 @@ import { ODataConfigurationFactory } from './ODataConfigurationFactory';
 import { ODataServiceFactory } from 'odata-lib';
 import { ModelingIndexPageComponent } from './containers/modeling-index-page';
 import { CategoryPageComponent } from './containers/category-page';
-import { CategorySchemaComponent } from './components/category/category-schema.component';
 import { AssociationPageComponent } from './containers/association-page';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
